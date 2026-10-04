@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saudi Heritage Pattern Library | DES Studio</title>
+
+<style>
+:root{
+  --bg:#f4f1ea;
+  --paper:#fffdf8;
+  --ink:#18231f;
+  --muted:#66706b;
+  --line:#d9ddd8;
+  --accent:#176b5b;
+  --accent2:#a63d40;
+  --soft:#e3ece7;
+  --shadow:0 16px 40px rgba(22,35,31,.10);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Arial,"Segoe UI",Tahoma,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+}
+button,input,select{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible{
+  outline:3px solid #2b8a78;
+  outline-offset:2px;
+}
+body.dark{
+  --bg:#101714;
+  --paper:#17211d;
+  --ink:#edf3ef;
+  --muted:#aebbb5;
+  --line:#33433c;
+  --accent:#63b8a6;
+  --accent2:#df8587;
+  --soft:#22342d;
+  --shadow:0 18px 45px rgba(0,0,0,.28);
+}
+body[dir="rtl"]{font-family:Tahoma,Arial,sans-serif}
+
+/* HEADER */
+header{
+  position:sticky;
+  top:0;
+  z-index:30;
+  background:color-mix(in srgb,var(--bg) 92%,transparent);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  max-width:1450px;
+  margin:auto;
+  min-height:70px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:12px 28px;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:800;
+  letter-spacing:.04em;
+}
+.brandmark{
+  width:34px;height:34px;border-radius:50%;
+  background:
+   conic-gradient(from 45deg,var(--accent),var(--accent) 25%,transparent 25% 50%,var(--accent2) 50% 75%,transparent 75%);
+  border:1px solid var(--line);
+}
+.nav-actions{display:flex;gap:8px}
+.iconbtn,.secondary,.primary{
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:9px 14px;
+  background:var(--paper);
+  color:var(--ink);
+}
+.primary{
+  background:var(--accent);
+  color:white;
+  border-color:var(--accent);
+}
+
+/* HERO */
+.hero{
+  max-width:1450px;
+  margin:auto;
+  padding:65px 28px 34px;
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:50px;
+  align-items:center;
+}
+.eyebrow{
+  text-transform:uppercase;
+  letter-spacing:.18em;
+  color:var(--accent);
+  font-size:12px;
+  font-weight:800;
+}
+h1{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(45px,7vw,92px);
+  line-height:.92;
+  margin:14px 0 22px;
+  font-weight:500;
+}
+body[dir="rtl"] h1{font-family:Tahoma,Arial,sans-serif;font-weight:700}
+.hero p{
+  max-width:750px;
+  color:var(--muted);
+  font-size:18px;
+  line-height:1.8;
+}
+.hero-art{
+  height:340px;
+  border-radius:28px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  border:1px solid var(--line);
+}
+.hero-art svg{width:100%;height:100%;display:block}
+
+.placeholder-note{
+  max-width:1450px;margin:0 auto 25px;padding:0 28px;
+}
+.note{
+  background:var(--soft);
+  border-left:4px solid var(--accent);
+  padding:14px 18px;
+  border-radius:10px;
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* APP */
+.app{
+  max-width:1450px;
+  margin:auto;
+  padding:20px 28px 80px;
+  display:grid;
+  grid-template-columns:300px 1fr;
+  gap:32px;
+}
+.sidebar{
+  position:sticky;
+  top:95px;
+  align-self:start;
+}
+.panel{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:20px;
+  margin-bottom:16px;
+}
+.panel h3{margin:0 0 15px;font-size:15px}
+.field{margin-bottom:13px}
+.field label{
+  display:block;
+  font-size:12px;
+  font-weight:700;
+  color:var(--muted);
+  margin-bottom:6px;
+}
+input,select{
+  width:100%;
+  border:1px solid var(--line);
+  background:var(--bg);
+  color:var(--ink);
+  padding:11px 12px;
+  border-radius:10px;
+}
+.map{
+  width:100%;
+  height:200px;
+}
+.map polygon{
+  stroke:var(--paper);
+  stroke-width:3;
+  fill:#b9c8c1;
+  cursor:pointer;
+  transition:.2s;
+}
+.map polygon:hover,.map polygon.active{fill:var(--accent)}
+.map text{
+  pointer-events:none;
+  font-size:8px;
+  fill:#10231d;
+  font-weight:700;
+}
+
+/* CONTENT */
+.toolbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  margin-bottom:20px;
+}
+.toolbar h2{
+  font-family:Georgia,serif;
+  font-size:32px;
+  margin:0;
+}
+.count{color:var(--muted);font-size:14px}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+}
+.card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:20px;
+  overflow:hidden;
+  transition:.25s;
+  position:relative;
+}
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow);
+}
+.pattern{
+  height:235px;
+  overflow:hidden;
+  background:#ddd;
+}
+.pattern svg{width:100%;height:100%;display:block}
+.cardbody{padding:17px}
+.cardtop{
+  display:flex;justify-content:space-between;gap:10px;
+}
+.card h3{margin:0;font-size:19px}
+.arname{color:var(--muted);font-size:14px;margin-top:3px}
+.region{color:var(--accent);font-size:12px;font-weight:700;margin:10px 0}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{
+  font-size:11px;
+  background:var(--soft);
+  border-radius:999px;
+  padding:5px 8px;
+}
+.pin{
+  border:1px solid var(--line);
+  background:var(--paper);
+  color:var(--ink);
+  width:34px;height:34px;border-radius:50%;
+}
+.pin.active{background:var(--accent);color:white}
+.cardclick{cursor:pointer}
+.empty{
+  grid-column:1/-1;
+  padding:70px 20px;
+  text-align:center;
+  color:var(--muted);
+}
+
+/* DETAIL MODAL */
+.modal{
+  position:fixed;inset:0;z-index:100;
+  background:rgba(5,12,9,.72);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:22px;
+}
+.modal.open{display:flex}
+.modalbox{
+  width:min(1050px,100%);
+  max-height:92vh;
+  overflow:auto;
+  background:var(--paper);
+  border-radius:24px;
+  box-shadow:0 30px 80px rgba(0,0,0,.35);
+}
+.modalgrid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+}
+.bigpattern{min-height:520px}
+.bigpattern svg{width:100%;height:100%;display:block}
+.details{padding:35px}
+.close{
+  float:right;
+  border:0;background:var(--soft);color:var(--ink);
+  width:38px;height:38px;border-radius:50%;
+}
+.details h2{
+  font-family:Georgia,serif;
+  font-size:38px;margin:25px 0 5px;
+}
+.story{
+  color:var(--muted);
+  line-height:1.8;
+  font-size:15px;
+}
+.meta{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+  margin-top:22px;
+}
+.meta div{
+  border-top:1px solid var(--line);
+  padding-top:10px;
+}
+.meta small{display:block;color:var(--muted);margin-bottom:4px}
+.swatches{display:flex;gap:8px;margin-top:8px}
+.swatch{
+  width:30px;height:30px;border-radius:50%;
+  border:1px solid var(--line);
+}
+
+/* COMPARE */
+.comparebar{
+  position:fixed;
+  bottom:18px;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(850px,calc(100% - 30px));
+  background:var(--ink);
+  color:var(--bg);
+  border-radius:18px;
+  padding:12px 16px;
+  display:none;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  z-index:60;
+  box-shadow:var(--shadow);
+}
+.comparebar.show{display:flex}
+.comparebar button{border:0;border-radius:999px;padding:9px 14px}
+.comparegrid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+.compareitem{
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:15px;
+}
+.compareitem p{font-size:13px;color:var(--muted);line-height:1.5}
+
+/* RESPONSIVE */
+@media(max-width:1050px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .hero{grid-template-columns:1fr}
+  .hero-art{height:250px}
+}
+@media(max-width:760px){
+  .nav{padding:10px 15px}
+  .brand span{font-size:12px}
+  .hero{padding:42px 18px 25px}
+  .app{grid-template-columns:1fr;padding:15px 18px 80px}
+  .sidebar{position:static}
+  .grid{grid-template-columns:1fr}
+  .modalgrid{grid-template-columns:1fr}
+  .bigpattern{min-height:320px}
+  .comparegrid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  *{scroll-behavior:auto!important;transition:none!important}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <div class="brandmark"></div>
+      <span id="brandText">SAUDI HERITAGE PATTERN LIBRARY</span>
+    </div>
+    <div class="nav-actions">
+      <button class="iconbtn" onclick="toggleLanguage()" id="langBtn">العربية</button>
+      <button class="iconbtn" onclick="toggleTheme()" aria-label="Toggle theme">◐</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div>
+    <div class="eyebrow" data-en="DESIGN FOUNDATION · COMMUNITY DESIGN INITIATIVE"
+         data-ar="أسس التصميم · مبادرة تصميم مجتمعية">
+      DESIGN FOUNDATION · COMMUNITY DESIGN INITIATIVE
+    </div>
+    <h1 data-en="Heritage,<br>reimagined."
+        data-ar="التراث،<br>برؤية معاصرة.">
+      Heritage,<br>reimagined.
+    </h1>
+    <p data-en="A living library of contemporary patterns developed by Design Foundation students from the stories, crafts, places and visual heritage of Saudi Arabia."
+       data-ar="مكتبة حية لأنماط تصميم معاصرة يطورها طلاب مقرر أسس التصميم، مستلهمة من القصص والحرف والأماكن والتراث البصري للمملكة العربية السعودية.">
+      A living library of contemporary patterns developed by Design Foundation students from the stories, crafts, places and visual heritage of Saudi Arabia.
+    </p>
+  </div>
+
+  <div class="hero-art" id="heroPattern"></div>
+</section>
+
+<div class="placeholder-note">
+  <div class="note" data-en="Prototype library: the 12 patterns and stories below are placeholder examples. Student-designed patterns will replace them as the library grows."
+       data-ar="مكتبة تجريبية: الأنماط والقصص الاثنا عشر أدناه أمثلة مؤقتة، وسيتم استبدالها بأعمال الطلاب مع نمو المكتبة.">
+    Prototype library: the 12 patterns and stories below are placeholder examples. Student-designed patterns will replace them as the library grows.
+  </div>
+</div>
+
+<main class="app">
+
+<aside class="sidebar">
+
+  <div class="panel">
+    <h3 data-en="Search the library" data-ar="البحث في المكتبة">Search the library</h3>
+    <input id="search" type="search" placeholder="Name, story or motif…" oninput="render()">
+  </div>
+
+  <div class="panel">
+    <h3 data-en="Explore by need" data-ar="استكشف حسب الاحتياج">Explore by need</h3>
+
+    <div class="field">
+      <label data-en="Region" data-ar="المنطقة">Region</label>
+      <select id="region" onchange="render()">
+        <option value="">All regions</option>
+        <option>Najd</option>
+        <option>Hijaz</option>
+        <option>Asir</option>
+        <option>Eastern Province</option>
+        <option>Northern Borders</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label data-en="Application" data-ar="الاستخدام">Application</label>
+      <select id="use" onchange="render()">
+        <option value="">All applications</option>
+        <option>Facade & Mashrabiya</option>
+        <option>Interior & Screens</option>
+        <option>Textile & Fashion</option>
+        <option>Print & Branding</option>
+        <option>Product & Packaging</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label data-en="Geometry" data-ar="نوع التكوين">Geometry</label>
+      <select id="geometry" onchange="render()">
+        <option value="">All</option>
+        <option>Geometric</option>
+        <option>Floral-Arabesque</option>
+        <option>Calligraphic</option>
+        <option>Figurative-Abstract</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label data-en="Symmetry" data-ar="التماثل">Symmetry</label>
+      <select id="symmetry" onchange="render()">
+        <option value="">All</option>
+        <option>Radial</option>
+        <option>Mirror</option>
+        <option>Translational</option>
+        <option>Tessellation</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label data-en="Density" data-ar="الكثافة">Density</label>
+      <select id="density" onchange="render()">
+        <option value="">All</option>
+        <option>Open</option>
+        <option>Balanced</option>
+        <option>Dense</option>
+      </select>
+    </div>
+
+    <button class="secondary" style="width:100%" onclick="clearFilters()"
+      data-en="Clear filters" data-ar="مسح المرشحات">Clear filters</button>
+  </div>
+
+  <div class="panel">
+    <h3 data-en="Explore by region" data-ar="استكشف حسب المنطقة">Explore by region</h3>
+    <svg class="map" viewBox="0 0 260 190" aria-label="Schematic map of Saudi heritage regions">
+      <polygon data-region="Northern Borders" onclick="mapFilter('Northern Borders')" points="68,22 174,15 220,48 185,70 115,62"/>
+      <polygon data-region="Hijaz" onclick="mapFilter('Hijaz')" points="40,58 78,43 106,65 98,130 72,173 43,139 25,93"/>
+      <polygon data-region="Najd" onclick="mapFilter('Najd')" points="108,66 184,70 194,125 145,145 99,129"/>
+      <polygon data-region="Eastern Province" onclick="mapFilter('Eastern Province')" points="185,70 225,54 242,94 221,145 192,125"/>
+      <polygon data-region="Asir" onclick="mapFilter('Asir')" points="72,174 99,131 144,146 128,181"/>
+      <text x="120" y="42">NORTH</text>
+      <text x="51" y="105">HIJAZ</text>
+      <text x="133" y="105">NAJD</text>
+      <text x="198" y="105">EAST</text>
+      <text x="94" y="163">ASIR</text>
+    </svg>
+  </div>
+
+  <div class="panel">
+    <h3 data-en="Find my pattern" data-ar="ابحث عن النمط المناسب">Find my pattern</h3>
+
+    <div class="field">
+      <label data-en="I am designing…" data-ar="أنا أصمم…">I am designing…</label>
+      <select id="helperUse">
+        <option>Facade & Mashrabiya</option>
+        <option>Interior & Screens</option>
+        <option>Textile & Fashion</option>
+        <option>Print & Branding</option>
+        <option>Product & Packaging</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label data-en="Heritage region" data-ar="المنطقة التراثية">Heritage region</label>
+      <select id="helperRegion">
+        <option>Najd</option>
+        <option>Hijaz</option>
+        <option>Asir</option>
+        <option>Eastern Province</option>
+        <option>Northern Borders</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label data-en="Visual mood" data-ar="الطابع البصري">Visual mood</label>
+      <select id="helperDensity">
+        <option>Open</option>
+        <option>Balanced</option>
+        <option>Dense</option>
+      </select>
+    </div>
+
+    <button class="primary" style="width:100%" onclick="findPattern()"
+      data-en="Find matches" data-ar="إظهار الأنسب">Find matches</button>
+  </div>
+
+</aside>
+
+<section>
+  <div class="toolbar">
+    <div>
+      <h2 data-en="Pattern Explorer" data-ar="مستكشف الأنماط">Pattern Explorer</h2>
+      <div class="count" id="count"></div>
+    </div>
+  </div>
+
+  <div class="grid" id="grid"></div>
+</section>
+
+</main>
+
+<!-- DETAIL -->
+<div class="modal" id="detailModal" role="dialog" aria-modal="true" onclick="backdropClose(event)">
+  <div class="modalbox" id="detailContent"></div>
+</div>
+
+<!-- COMPARE -->
+<div class="comparebar" id="compareBar">
+  <span id="compareText"></span>
+  <button onclick="openCompare()">Compare</button>
+</div>
+
+<div class="modal" id="compareModal" role="dialog" aria-modal="true" onclick="backdropCompare(event)">
+  <div class="modalbox" style="padding:25px">
+    <button class="close" onclick="closeCompare()">×</button>
+    <h2>Pattern Comparison</h2>
+    <div class="comparegrid" id="compareGrid"></div>
+  </div>
+</div>
+
+<script>
+
+/*
+===============================================================
+HOW STUDENTS ADD / REPLACE A PATTERN
+===============================================================
+Each pattern below is ONE object in the PATTERNS array.
+
+To add a student's work:
+1. Copy one complete {...} object.
+2. Change id to a unique number.
+3. Replace English/Arabic names, student, story and attributes.
+4. Change palette colors.
+5. Choose a "draw" number (1–6) for the temporary generated motif.
+
+Later, when the student's real SVG is ready, you can replace the
+generated drawing function with that student's SVG markup while
+keeping the metadata object. The rest of the website does not need
+to change.
+===============================================================
+*/
+
+const PATTERNS = [
+{
+ id:1,
+ name:"Diriyah Gate Rhythm",
+ ar:"إيقاع بوابات الدرعية",
+ region:"Najd",
+ use:["Facade & Mashrabiya","Interior & Screens"],
+ geometry:"Geometric",
+ symmetry:"Tessellation",
+ density:"Balanced",
+ color:"Earth Red",
+ palette:["#6D2E2E","#C67C5C","#E7D9C5","#273C34"],
+ motif:"Najdi triangular plaster ornament",
+ student:"Placeholder Student 01",
+ draw:1,
+ story:"PLACEHOLDER STORY — Inspired by the triangular and stepped gypsum ornament found across traditional Najdi architecture in At-Turaif, Diriyah. The motif abstracts the rhythm of fortified walls and shaded openings into an interlocking contemporary repeat."
+},
+{
+ id:2,
+ name:"Sadu Journey",
+ ar:"رحلة السدو",
+ region:"Najd",
+ use:["Textile & Fashion","Product & Packaging"],
+ geometry:"Geometric",
+ symmetry:"Translational",
+ density:"Dense",
+ color:"Crimson",
+ palette:["#8B2635","#111D1A","#F1E4D2","#B98B5E"],
+ motif:"Al Sadu woven bands",
+ student:"Placeholder Student 02",
+ draw:2,
+ story:"PLACEHOLDER STORY — Drawn from Al Sadu weaving traditions, the pattern reinterprets narrow woven bands and recurring triangular marks as a visual story of movement, tents, journeys and the desert routes of Bedouin communities."
+},
+{
+ id:3,
+ name:"Rawashin Light",
+ ar:"ضوء الرواشين",
+ region:"Hijaz",
+ use:["Facade & Mashrabiya","Interior & Screens"],
+ geometry:"Geometric",
+ symmetry:"Mirror",
+ density:"Open",
+ color:"Teal",
+ palette:["#176B6B","#79A9A1","#E8DCC8","#623B2A"],
+ motif:"Jeddah Rawashin lattice",
+ student:"Placeholder Student 03",
+ draw:3,
+ story:"PLACEHOLDER STORY — Inspired by the historic Rawashin of Al-Balad in Jeddah. The motif reduces wooden lattice screens into alternating openings that evoke filtered light, privacy, ventilation and the changing shadows of old Hijazi streets."
+},
+{
+ id:4,
+ name:"Red Sea Window",
+ ar:"نافذة البحر الأحمر",
+ region:"Hijaz",
+ use:["Print & Branding","Product & Packaging"],
+ geometry:"Figurative-Abstract",
+ symmetry:"Radial",
+ density:"Balanced",
+ color:"Coral",
+ palette:["#B94D4D","#225A63","#F3E8D0","#D89A61"],
+ motif:"Coral and coastal window forms",
+ student:"Placeholder Student 04",
+ draw:4,
+ story:"PLACEHOLDER STORY — A contemporary abstraction of Red Sea coral branches and the carved window rhythms of historic coastal houses. The pattern links Jeddah's architectural identity to the ecology that shaped its port culture."
+},
+{
+ id:5,
+ name:"Asiri Wall Song",
+ ar:"أغنية الجدار العسيري",
+ region:"Asir",
+ use:["Interior & Screens","Print & Branding"],
+ geometry:"Geometric",
+ symmetry:"Mirror",
+ density:"Dense",
+ color:"Green",
+ palette:["#1F6B4F","#D94B4B","#F2C14E","#2C4B73"],
+ motif:"Al-Qatt Al-Asiri geometry",
+ student:"Placeholder Student 05",
+ draw:5,
+ story:"PLACEHOLDER STORY — Inspired by Al-Qatt Al-Asiri, the traditional interior wall art practiced by women in Asir. Stacked triangles and colored bands are reorganized into a contemporary repeat celebrating domestic creativity and visual storytelling."
+},
+{
+ id:6,
+ name:"Mountain Steps",
+ ar:"درجات الجبل",
+ region:"Asir",
+ use:["Textile & Fashion","Facade & Mashrabiya"],
+ geometry:"Geometric",
+ symmetry:"Translational",
+ density:"Balanced",
+ color:"Indigo",
+ palette:["#263B6A","#B9483A","#D8A536","#E8E0CD"],
+ motif:"Asir mountain terraces",
+ student:"Placeholder Student 06",
+ draw:6,
+ story:"PLACEHOLDER STORY — Inspired by the layered mountain landscape and agricultural terraces of Asir. Rising stepped lines translate elevation, cultivation and settlement into a modular pattern suited to screens and woven surfaces."
+},
+{
+ id:7,
+ name:"Palm Frond Current",
+ ar:"تيار سعف النخيل",
+ region:"Eastern Province",
+ use:["Product & Packaging","Textile & Fashion"],
+ geometry:"Floral-Arabesque",
+ symmetry:"Mirror",
+ density:"Open",
+ color:"Palm Green",
+ palette:["#2D6652","#8FAE78","#E8DDBF","#77563B"],
+ motif:"Date palm frond weaving",
+ student:"Placeholder Student 07",
+ draw:4,
+ story:"PLACEHOLDER STORY — Inspired by palm-frond weaving and the oasis landscapes of Al-Ahsa. Curving leaves are simplified into a repeated branching unit recalling baskets, shade structures and the agricultural life surrounding the date palm."
+},
+{
+ id:8,
+ name:"Al-Ahsa Water Lines",
+ ar:"خطوط مياه الأحساء",
+ region:"Eastern Province",
+ use:["Interior & Screens","Print & Branding"],
+ geometry:"Geometric",
+ symmetry:"Tessellation",
+ density:"Balanced",
+ color:"Blue",
+ palette:["#246A73","#79A9A8","#D6C79C","#3B493F"],
+ motif:"Oasis irrigation channels",
+ student:"Placeholder Student 08",
+ draw:3,
+ story:"PLACEHOLDER STORY — Inspired by the channels that carry water through Al-Ahsa Oasis. Intersecting lines and small nodes turn the idea of irrigation, connection and cultivated land into a calm tessellated field."
+},
+{
+ id:9,
+ name:"Desert Star Path",
+ ar:"مسار نجمة الصحراء",
+ region:"Northern Borders",
+ use:["Print & Branding","Textile & Fashion"],
+ geometry:"Geometric",
+ symmetry:"Radial",
+ density:"Open",
+ color:"Navy",
+ palette:["#203A52","#C66B4E","#E7D8BC","#73806D"],
+ motif:"Star navigation and desert routes",
+ student:"Placeholder Student 09",
+ draw:1,
+ story:"PLACEHOLDER STORY — Inspired by night travel across northern desert landscapes, where stars historically supported orientation and storytelling. An eight-point directional form repeats with generous negative space."
+},
+{
+ id:10,
+ name:"Stone & Fire",
+ ar:"الحجر والنار",
+ region:"Northern Borders",
+ use:["Product & Packaging","Interior & Screens"],
+ geometry:"Figurative-Abstract",
+ symmetry:"Translational",
+ density:"Dense",
+ color:"Terracotta",
+ palette:["#9B493D","#3E4039","#D7B98E","#EFE5D3"],
+ motif:"Stone hearth and desert gathering",
+ student:"Placeholder Student 10",
+ draw:6,
+ story:"PLACEHOLDER STORY — Inspired by the visual memory of stone, fire and gathering in northern landscapes. Angular fragments surround a repeated central ember, transforming hospitality and evening conversation into an abstract repeat."
+},
+{
+ id:11,
+ name:"Palm & Poetry",
+ ar:"النخلة والقصيدة",
+ region:"Najd",
+ use:["Print & Branding","Product & Packaging"],
+ geometry:"Calligraphic",
+ symmetry:"Translational",
+ density:"Open",
+ color:"Forest",
+ palette:["#234E3E","#B56A4A","#E9DDC6","#191F1B"],
+ motif:"Arabic poetic rhythm and palm silhouette",
+ student:"Placeholder Student 11",
+ draw:2,
+ story:"PLACEHOLDER STORY — Inspired by the cadence of Arabic poetry and the vertical silhouette of the palm. Rather than reproducing a specific verse, the pattern translates the rhythm of written lines and pauses into abstract repeated strokes."
+},
+{
+ id:12,
+ name:"Taif Rose Orbit",
+ ar:"مدار ورد الطائف",
+ region:"Hijaz",
+ use:["Textile & Fashion","Product & Packaging"],
+ geometry:"Floral-Arabesque",
+ symmetry:"Radial",
+ density:"Balanced",
+ color:"Rose",
+ palette:["#A64B67","#D8899E","#E8DCC9","#536454"],
+ motif:"Taif rose petals",
+ student:"Placeholder Student 12",
+ draw:5,
+ story:"PLACEHOLDER STORY — Inspired by the Taif rose and the seasonal harvest associated with its fragrance. Petals are reduced to geometric wedges and rotated around a center to create a contemporary radial ornament."
+}
+];
+
+let compare = [];
+let ranked = null;
+let arabic = false;
+
+/* GENERATED SVG PATTERNS */
+function patternSVG(p){
+ const [a,b,c,d]=p.palette;
+ const id="p"+p.id+"-"+Math.random().toString(36).slice(2);
+
+ let tile="";
+
+ if(p.draw===1){
+  tile=`
+  <path d="M0 40L40 0L80 40L40 80Z" fill="none" stroke="${a}" stroke-width="7"/>
+  <path d="M20 40L40 20L60 40L40 60Z" fill="${b}"/>
+  <circle cx="40" cy="40" r="6" fill="${d}"/>`;
+ }
+ if(p.draw===2){
+  tile=`
+  <rect width="80" height="80" fill="${c}"/>
+  <path d="M0 15H80M0 65H80" stroke="${a}" stroke-width="9"/>
+  <path d="M0 40L20 20L40 40L60 20L80 40L60 60L40 40L20 60Z" fill="${d}"/>
+  <circle cx="40" cy="40" r="7" fill="${b}"/>`;
+ }
+ if(p.draw===3){
+  tile=`
+  <rect width="80" height="80" fill="${c}"/>
+  <path d="M5 5H75V75H5Z M20 20H60V60H20Z" fill="none" stroke="${a}" stroke-width="5"/>
+  <path d="M40 0V80M0 40H80" stroke="${b}" stroke-width="3"/>`;
+ }
+ if(p.draw===4){
+  tile=`
+  <rect width="80" height="80" fill="${c}"/>
+  <path d="M40 40C15 10 8 35 40 40C10 65 35 72 40 40C65 72 72 48 40 40C70 15 45 8 40 40Z" fill="${a}"/>
+  <circle cx="40" cy="40" r="8" fill="${b}"/>`;
+ }
+ if(p.draw===5){
+  tile=`
+  <rect width="80" height="80" fill="${c}"/>
+  <path d="M0 70L20 25L40 70L60 25L80 70Z" fill="${a}"/>
+  <path d="M0 55L20 10L40 55L60 10L80 55" fill="none" stroke="${b}" stroke-width="5"/>
+  <circle cx="20" cy="62" r="5" fill="${d}"/><circle cx="60" cy="62" r="5" fill="${d}"/>`;
+ }
+ if(p.draw===6){
+  tile=`
+  <rect width="80" height="80" fill="${c}"/>
+  <path d="M0 65H20V50H40V35H60V20H80" fill="none" stroke="${a}" stroke-width="9"/>
+  <path d="M0 20H20V35H40V50H60V65H80" fill="none" stroke="${b}" stroke-width="5"/>`;
+ }
+
+ return `
+ <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="${p.name}">
+ <defs>
+   <pattern id="${id}" width="80" height="80" patternUnits="userSpaceOnUse">
+    ${tile}
+   </pattern>
+ </defs>
+ <rect width="100%" height="100%" fill="url(#${id})"/>
+ </svg>`;
+}
+
+document.getElementById("heroPattern").innerHTML=patternSVG(PATTERNS[4]);
+
+function render(){
+ const q=document.getElementById("search").value.toLowerCase().trim();
+ const region=document.getElementById("region").value;
+ const use=document.getElementById("use").value;
+ const geometry=document.getElementById("geometry").value;
+ const symmetry=document.getElementById("symmetry").value;
+ const density=document.getElementById("density").value;
+
+ let items=PATTERNS.filter(p=>{
+   const hay=(p.name+" "+p.ar+" "+p.story+" "+p.motif).toLowerCase();
+   return (!q||hay.includes(q)) &&
+          (!region||p.region===region) &&
+          (!use||p.use.includes(use)) &&
+          (!geometry||p.geometry===geometry) &&
+          (!symmetry||p.symmetry===symmetry) &&
+          (!density||p.density===density);
+ });
+
+ if(ranked){
+   items.sort((x,y)=>(ranked[y.id]||0)-(ranked[x.id]||0));
+ }
+
+ document.getElementById("count").textContent=
+   `${items.length} ${arabic?"نمط":"patterns"}`;
+
+ document.querySelectorAll(".map polygon").forEach(el=>{
+   el.classList.toggle("active",el.dataset.region===region);
+ });
+
+ const grid=document.getElementById("grid");
+
+ if(!items.length){
+   grid.innerHTML=`<div class="empty">${arabic?"لا توجد نتائج مطابقة.":"No patterns match these filters."}</div>`;
+   return;
+ }
+
+ grid.innerHTML=items.map(p=>`
+   <article class="card">
+     <div class="pattern cardclick" tabindex="0"
+       onclick="openDetail(${p.id})"
+       onkeydown="if(event.key==='Enter')openDetail(${p.id})">
+       ${patternSVG(p)}
+     </div>
+     <div class="cardbody">
+       <div class="cardtop">
+        <div class="cardclick" onclick="openDetail(${p.id})">
+          <h3>${arabic?p.ar:p.name}</h3>
+          <div class="arname">${arabic?p.name:p.ar}</div>
+        </div>
+        <button class="pin ${compare.includes(p.id)?"active":""}"
+          onclick="toggleCompare(${p.id});event.stopPropagation()"
+          aria-label="Pin for comparison">+</button>
+       </div>
+       <div class="region">${p.region}</div>
+       <div class="chips">
+         <span class="chip">${p.geometry}</span>
+         <span class="chip">${p.symmetry}</span>
+         <span class="chip">${p.density}</span>
+       </div>
+     </div>
+   </article>
+ `).join("");
+}
+
+function openDetail(id){
+ const p=PATTERNS.find(x=>x.id===id);
+
+ document.getElementById("detailContent").innerHTML=`
+ <div class="modalgrid">
+  <div class="bigpattern">${patternSVG(p)}</div>
+  <div class="details">
+    <button class="close" onclick="closeDetail()">×</button>
+    <div class="eyebrow">${p.region} · ${p.geometry}</div>
+    <h2>${arabic?p.ar:p.name}</h2>
+    <div class="arname">${arabic?p.name:p.ar}</div>
+
+    <h3>${arabic?"القصة":"The Story"}</h3>
+    <p class="story">${p.story}</p>
+
+    <div class="meta">
+      <div><small>${arabic?"المصمم":"Designer"}</small>${p.student}</div>
+      <div><small>${arabic?"المنطقة":"Region"}</small>${p.region}</div>
+      <div><small>${arabic?"أصل الزخرفة":"Motif lineage"}</small>${p.motif}</div>
+      <div><small>${arabic?"التماثل":"Symmetry / Repeat"}</small>${p.symmetry}</div>
+      <div><small>${arabic?"الكثافة":"Density"}</small>${p.density}</div>
+      <div><small>${arabic?"الاستخدامات":"Suggested applications"}</small>${p.use.join(", ")}</div>
+    </div>
+
+    <h3>${arabic?"لوحة الألوان":"Palette"}</h3>
+    <div class="swatches">
+      ${p.palette.map(c=>`<span class="swatch" title="${c}" style="background:${c}"></span>`).join("")}
+    </div>
+  </div>
+ </div>`;
+
+ document.getElementById("detailModal").classList.add("open");
+}
+
+function closeDetail(){
+ document.getElementById("detailModal").classList.remove("open");
+}
+function backdropClose(e){
+ if(e.target.id==="detailModal")closeDetail();
+}
+
+function clearFilters(){
+ ["search","region","use","geometry","symmetry","density"].forEach(id=>{
+  document.getElementById(id).value="";
+ });
+ ranked=null;
+ render();
+}
+
+function mapFilter(region){
+ document.getElementById("region").value=region;
+ ranked=null;
+ render();
+}
+
+function findPattern(){
+ const use=document.getElementById("helperUse").value;
+ const region=document.getElementById("helperRegion").value;
+ const density=document.getElementById("helperDensity").value;
+
+ ranked={};
+ PATTERNS.forEach(p=>{
+  let score=0;
+  if(p.use.includes(use))score+=4;
+  if(p.region===region)score+=3;
+  if(p.density===density)score+=2;
+  ranked[p.id]=score;
+ });
+
+ document.getElementById("region").value="";
+ document.getElementById("use").value="";
+ document.getElementById("density").value="";
+ render();
+ document.querySelector(".toolbar").scrollIntoView({behavior:"smooth"});
+}
+
+function toggleCompare(id){
+ if(compare.includes(id)){
+  compare=compare.filter(x=>x!==id);
+ }else{
+  if(compare.length>=3){
+   alert("You can compare up to 3 patterns.");
+   return;
+  }
+  compare.push(id);
+ }
+ updateCompare();
+ render();
+}
+
+function updateCompare(){
+ const bar=document.getElementById("compareBar");
+ bar.classList.toggle("show",compare.length>0);
+ document.getElementById("compareText").textContent=
+   `${compare.length} pattern${compare.length===1?"":"s"} pinned · select 2–3 to compare`;
+}
+
+function openCompare(){
+ if(compare.length<2){
+  alert("Pin at least 2 patterns to compare.");
+  return;
+ }
+
+ document.getElementById("compareGrid").innerHTML=compare.map(id=>{
+  const p=PATTERNS.find(x=>x.id===id);
+  return `
+   <div class="compareitem">
+    <div style="height:150px">${patternSVG(p)}</div>
+    <h3>${p.name}</h3>
+    <div class="arname">${p.ar}</div>
+    <p><b>Region:</b> ${p.region}</p>
+    <p><b>Use:</b> ${p.use.join(", ")}</p>
+    <p><b>Symmetry:</b> ${p.symmetry}</p>
+    <div class="swatches">
+     ${p.palette.map(c=>`<span class="swatch" style="background:${c}"></span>`).join("")}
+    </div>
+    <p>${p.story.replace("PLACEHOLDER STORY — ","").slice(0,135)}…</p>
+   </div>`;
+ }).join("");
+
+ document.getElementById("compareModal").classList.add("open");
+}
+
+function closeCompare(){
+ document.getElementById("compareModal").classList.remove("open");
+}
+function backdropCompare(e){
+ if(e.target.id==="compareModal")closeCompare();
+}
+
+function toggleTheme(){
+ document.body.classList.toggle("dark");
+}
+
+function toggleLanguage(){
+ arabic=!arabic;
+ document.documentElement.lang=arabic?"ar":"en";
+ document.body.dir=arabic?"rtl":"ltr";
+ document.getElementById("langBtn").textContent=arabic?"English":"العربية";
+
+ document.querySelectorAll("[data-en]").forEach(el=>{
+   el.innerHTML=arabic?el.dataset.ar:el.dataset.en;
+ });
+
+ document.getElementById("search").placeholder=
+   arabic?"الاسم، القصة أو الزخرفة…":"Name, story or motif…";
+
+ render();
+}
+
+document.addEventListener("keydown",e=>{
+ if(e.key==="Escape"){
+  closeDetail();
+  closeCompare();
+ }
+});
+
+render();
+
+</script>
+</body>
+</html>

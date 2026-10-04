@@ -1,0 +1,60 @@
+You are my design-and-build partner. I teach a Design (DES) studio, and my students are
+building a *contemporary Saudi pattern library*: a set of original geometric/ornamental
+patterns they design by hand, where *each pattern is inspired by a story* drawn from Saudi
+heritage (a place, a craft, a proverb, a historical moment, a regional motif).
+
+Build me a *single-page, self-contained interactive artifact* (one HTML file, all CSS/JS
+inline, no external data files, no backend) that lets people **browse, filter, and find the
+pattern that fits their need** — not just scroll a static gallery of images.
+
+## What the artifact must do
+1. *Pattern explorer* — a responsive grid of pattern cards. Each card shows the pattern
+   itself (see "How to render patterns" below), its name (English + Arabic), its region, and
+   2–3 key attribute chips.
+2. *Live search* — by name (EN/AR), story keyword, or motif.
+3. *Filters* that answer real design needs:
+   - *Geographical area / region* — the pattern's heritage origin (e.g. Najd, Hijaz, Asir,
+     Eastern Province, Northern Borders — adjust to the real set my students use).
+   - *Use case / application* — architectural facade & mashrabiya, interior & screens,
+     textile & fashion, print & branding, product & packaging.
+   - *Visual properties* — geometry type (geometric / floral-arabesque / calligraphic /
+     figurative-abstract), symmetry (radial / mirror / translational / tessellation),
+     density (open / balanced / dense), and a dominant color.
+4. *Interactive region map* — a clickable schematic map of Saudi Arabia's regions that
+   filters the library to patterns from that area (recolor the active region). Keep it a clean
+   stylized map, not a precise survey.
+5. *Detail view* — clicking a card opens a panel with: the full pattern rendered large, its
+   *story* (the heritage narrative that inspired it — this is the heart of the project),
+   the designer/student name, region, motif lineage, suggested applications, symmetry/repeat
+   notes, and the palette swatches.
+6. *"Find my pattern" helper* — let the user pick an application + a region + a mood/density
+   and get the best-matching patterns surfaced first. (A simple scored match is fine.)
+7. *Compare tray* — pin 2–3 patterns and view them side by side (region, use, symmetry,
+   palette, story in one line).
+
+## How to render the patterns
+The students design by hand, so there are no image files yet. Render each seed pattern as
+*generated CSS/SVG* (repeating tiles, <pattern> fills, or small Canvas routines) so the
+library is fully functional and self-contained. Structure the code so that **each pattern is
+one object in a PATTERNS array** with all its fields, and the drawing is driven by that
+object — so my students can later swap in their own SVG/motif per entry by editing one object,
+without touching the rest of the app. Add a short comment block showing exactly how to add a
+new pattern.
+
+## Data to seed it with
+I don't have the students' final patterns yet, so *seed it with ~12 example patterns* you
+invent — original, plausible contemporary motifs, each with a real heritage-rooted story,
+spread across the regions and use cases above. Make the stories specific and evocative (a real
+place, craft, or motif per entry), clearly marked as placeholder examples to be replaced.
+
+## Design direction
+- Treat this as a design studio's showcase, not a utility dashboard — it should feel crafted.
+- *Bilingual Arabic / English* with a working RTL toggle.
+- Choose a palette and typography grounded in Saudi ornamental tradition without being a
+  cliché (avoid generic "heritage gold-on-sand"); pick deliberate display + body + Arabic
+  fonts from Google Fonts. Design proper light and dark themes.
+- The pattern IS the hero — let the geometry carry the visual weight; keep chrome quiet.
+- Mobile-friendly (works at ~400px), accessible (keyboard, focus states, reduced-motion).
+
+Open at rest showing the populated library (not an empty shell). When you're done, give me a
+one-line note on how my students replace the seed patterns with their own.
